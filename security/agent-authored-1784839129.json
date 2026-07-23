@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "description": "RBAC policy for agent system granting scoped execute permission",
+  "permissions": [
+    {
+      "name": "agent:execute",
+      "description": "Allows execution of agent tasks within a specific project scope",
+      "resource": "agent",
+      "action": "execute",
+      "effect": "allow",
+      "conditions": {
+        "scope": "project:my-project"
+      }
+    }
+  ],
+  "roles": [
+    {
+      "name": "agent_executor",
+      "permissions": [
+        "agent:execute"
+      ]
+    }
+  ],
+  "assignments": [
+    {
+      "role": "agent_executor",
+      "subjects": [
+        "user:john.doe@example.com"
+      ],
+      "scope": "project:my-project"
+    }
+  ]
+}
